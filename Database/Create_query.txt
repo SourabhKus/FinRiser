@@ -1,10 +1,93 @@
 1) 
 CREATE TABLE Clients (
-    ClientId VARCHAR(100) PRIMARY KEY,
-    Password VARCHAR(100),
+    ClientId VARCHAR(50) PRIMARY KEY,
+    Password VARCHAR(50),
     Name VARCHAR(100),
-    Contact VARCHAR(10),
+    Contact VARCHAR(50),
     EKYC TIMESTAMP,
     LastLogin TIMESTAMP,
     Suspended BOOLEAN
 );
+
+
+2) 
+CREATE TABLE UsersDetails(
+    UserId VARCHAR(50) PRIMARY KEY,
+    Adhar VARCHAR(50),
+    PAN VARCHAR(50),
+    FatherName VARCHAR(50),
+    Address VARCHAR(500),
+    Photo BLOB,
+    AccountOpenDate TIMESTAMP
+);
+
+
+3)
+CREATE TABLE Dealers(
+    DealerId VARCHAR(50) PRIMARY KEY,
+    Password VARCHAR(50),
+    Name VARCHAR(100),
+    Contact VARCHAR(50),
+    EKYC TIMESTAMP,
+    LastLogin TIMESTAMP,
+    Suspended BOOLEAN,
+    Ranking INT
+);
+
+
+4) 
+CREATE TABLE ClientHoldings(
+    ClientId VARCHAR(50) PRIMARY KEY,
+    ScripId VARCHAR(50),
+    Qty INT,
+    BuyAvg INT 
+);
+
+
+5) 
+CREATE TABLE Dealers(
+    UserId VARCHAR(50) PRIMARY KEY,
+    AvailableCash INT,
+    UtilizedCash INT
+);
+
+
+6)
+CREATE TABLE Order(
+    OrderId VARCHAR(50) PRIMARY KEY,
+    UserId VARCHAR(50),
+    Type BOOLEAN,
+    Qty INT,
+    DateTime TIMESTAMP,
+    ClientId VARCHAR(50),
+    ScripId VARCHAR(50),
+    Price INT
+);
+
+
+7) 
+CREATE TABLE Trade(
+    TradeId VARCHAR(50) PRIMARY KEY,
+    OrderId VARCHAR(50),
+    Type BOOLEAN,
+    Qty INT,
+    DateTime TIMESTAMP,
+    ClientId VARCHAR(50),
+    ScripId VARCHAR(50),
+    Price INT
+);
+
+
+8) 
+CREATE TABLE Position(
+    UserId VARCHAR(50) PRIMARY KEY,
+    Type BOOLEAN,
+    Qty INT,
+    DateTime TIMESTAMP,
+    ClientId VARCHAR(50),
+    ScripId VARCHAR(50),
+    TradeId VARCHAR(50),
+    OrderId VARCHAR(50) 
+);
+
+
